@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLInfo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace SQLInfo.Data
 {
-    public class DatabaseData:BaseData
+    public class DatabaseData:BaseData<T_Database>
     {
+        public DatabaseData()
+        {
 
+        }
     }
 }
