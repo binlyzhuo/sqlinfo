@@ -86,6 +86,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery.ztree.all-3.5.js" />
+    <Content Include="Scripts\jquery.ztree.all-3.5.min.js" />
+    <Content Include="Scripts\jquery.ztree.core-3.5.js" />
+    <Content Include="Scripts\jquery.ztree.core-3.5.min.js" />
+    <Content Include="Scripts\jquery.ztree.excheck-3.5.js" />
+    <Content Include="Scripts\jquery.ztree.excheck-3.5.min.js" />
+    <Content Include="Scripts\jquery.ztree.exedit-3.5.js" />
+    <Content Include="Scripts\jquery.ztree.exedit-3.5.min.js" />
+    <Content Include="Scripts\jquery.ztree.exedit.js" />
+    <Content Include="Scripts\jquery.ztree.exhide-3.5.js" />
+    <Content Include="Scripts\jquery.ztree.exhide-3.5.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
