@@ -15,5 +15,10 @@ namespace SQLInfo.Business
         {
             return databaseData.Single(id);
         }
+
+        public List<string> GetAllDatabases(T_Database database)
+        {
+            return databaseData.GetAllDatabases(database);
+        }
     }
 }

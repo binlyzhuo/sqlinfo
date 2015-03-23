@@ -14,6 +14,7 @@ namespace SQLInfo.Web.Controllers
         public ActionResult Index()
         {
             var dbServer = dataLogic.GetDatabase(1);
+            var dblist = dataLogic.GetAllDatabases(dbServer);
             return View();
         }
     }

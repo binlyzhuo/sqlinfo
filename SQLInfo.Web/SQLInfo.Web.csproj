@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.SQLite, Version=1.0.96.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.96.0\lib\net451\System.Data.SQLite.dll</HintPath>
@@ -98,6 +102,21 @@
     <Content Include="Scripts\jquery.ztree.exedit.js" />
     <Content Include="Scripts\jquery.ztree.exhide-3.5.js" />
     <Content Include="Scripts\jquery.ztree.exhide-3.5.min.js" />
+    <Content Include="Styles\img\diy\1_close.png" />
+    <Content Include="Styles\img\diy\1_open.png" />
+    <Content Include="Styles\img\diy\2.png" />
+    <Content Include="Styles\img\diy\3.png" />
+    <Content Include="Styles\img\diy\4.png" />
+    <Content Include="Styles\img\diy\5.png" />
+    <Content Include="Styles\img\diy\6.png" />
+    <Content Include="Styles\img\diy\7.png" />
+    <Content Include="Styles\img\diy\8.png" />
+    <Content Include="Styles\img\diy\9.png" />
+    <Content Include="Styles\img\line_conn.gif" />
+    <Content Include="Styles\img\loading.gif" />
+    <Content Include="Styles\img\zTreeStandard.gif" />
+    <Content Include="Styles\img\zTreeStandard.png" />
+    <Content Include="Styles\zTreeStyle.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -110,7 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="packages.config" />
     <Content Include="Views\Shared\_BaseLayoutPage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
