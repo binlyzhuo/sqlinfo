@@ -34,6 +34,10 @@
     <Reference Include="Dapper">
       <HintPath>..\packages\Dapper.1.39\lib\net45\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="NPoco">
       <HintPath>..\packages\NPoco.2.6.88\lib\net40\NPoco.dll</HintPath>
     </Reference>
@@ -68,7 +72,7 @@
     <Compile Include="ViewModel\UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
