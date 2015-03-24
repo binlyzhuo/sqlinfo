@@ -1,5 +1,6 @@
 ﻿using SQLInfo.Business;
 using SQLInfo.ViewModel;
+using SQLInfo.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace SQLInfo.Web.Controllers
     public class HomeController : Controller
     {
         DatabaseBusinessLogic dataLogic = new DatabaseBusinessLogic();
+        UserBusinessLogic userLogic = new UserBusinessLogic();
         // GET: Home
         public ActionResult Index()
         {
@@ -87,6 +89,33 @@ namespace SQLInfo.Web.Controllers
             ViewBag.TableName = tableName;
             ViewBag.DbName = dbName;
             return View(tableDetails);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(UserLoginModel model)
+        {
+            var userinfo = userLogic.GetUserInfo(model.UserName,model.Password);
+            if(userinfo!=null)
+            {
+                return RedirectToAction("AdminIndex","Home",null);
+            }
+            return View();
+        }
+
+        public ActionResult AdminIndex()
+        {
+            var dataServers = dataLogic.GetAllServers();
+            return View(dataServers);
+        }
+
+        public ActionResult AddServer()
+        {
+            return View();
         }
     }
 }

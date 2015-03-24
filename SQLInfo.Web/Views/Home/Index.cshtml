@@ -52,36 +52,21 @@
         });
     </script>
 <style type="text/css">
-    table.gridtable {
-        font-family: verdana,arial,sans-serif;
-        font-size: 11px;
-        color: #333333;
-        border-width: 1px;
-        border-color: #666666;
-        border-collapse: collapse;
-    }
-
-        table.gridtable th {
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #666666;
-            background-color: #dedede;
-        }
-
-        table.gridtable td {
-            border-width: 1px;
-            padding: 8px;
-            border-style: solid;
-            border-color: #666666;
-            background-color: #ffffff;
-        }
+    
 </style>
 }
-
-<div class="zTreeDemoBackground left" style="float:left;width:340px;border-right:1px solid blue;">
-    <ul id="treeDemo" class="ztree"></ul>
-    
+<div style="border-bottom:1px solid blue;height:80px;">
+    <h1 style="float:left;width:300px;">SQLInfo</h1>
+    <span style="float:right;">
+        <a href="/home/login" target="_self">登录</a>
+    </span>
 </div>
-<div id="divDetail" style="float:left;margin-left:10px;margin-bottom:10px;"></div>
+<div>
+    <div class="zTreeDemoBackground left" style="float:left;width:340px;border-right:1px solid blue;overflow-y:auto; overflow-x:auto; height:800px;">
+        <ul id="treeDemo" class="ztree"></ul>
+
+    </div>
+    <div id="divDetail" style="float:left;margin-left:10px;margin-bottom:10px;"></div>
+</div>
+
 

@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "AddServer";
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+
+<h2>AddServer</h2>
+@model SQLInfo.Model.T_Database
+@using (Html.BeginForm("AddServer", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>服务器:</td>
+            <td>@Html.TextBoxFor(u => u.Server)</td>
+            <td>@Html.ValidationMessageFor(u => u.Server)</td>
+        </tr>
+        <tr>
+            <td>用户名:</td>
+            <td>@Html.TextBoxFor(u => u.Admin)</td>
+            <td>@Html.ValidationMessageFor(u => u.Admin)</td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td>@Html.PasswordFor(u => u.Password)</td>
+            <td>@Html.ValidationMessageFor(u => u.Password)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="添加" />
+            </td>
+            <td></td>
+        </tr>
+    </table>
+}

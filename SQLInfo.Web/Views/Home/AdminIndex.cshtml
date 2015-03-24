@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+@model List<T_Database>
+@using SQLInfo.Model
+@section header{
+   <script type="text/javascript">
+       function addDbServer() {
+           window.showModalDialog("/home/addserver");
+       }
+    </script>    
+}
+<h2>AdminIndex</h2>
+<a href="#" onclick="addDbServer();">添加</a>
+<table class="gridtable">
+    <tr>
+        <th>服务器</th>
+        <th>数据库类型</th>
+        <th>登录名</th>
+        <th>密码</th>
+        <th>操作</th>
+    </tr>
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.Server</td>
+            <td>@s.DbType</td>
+            <td>@s.Admin</td>
+            <td>@s.Password</td>
+            <td>
+                <a href="#">修改</a>
+                <a href="#">删除</a>
+            </td>
+        </tr>
+    }
+</table>

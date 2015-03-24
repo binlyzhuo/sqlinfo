@@ -52,9 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\DatabaseBusinessLogic.cs" />
+    <Compile Include="Business\UserBusinessLogic.cs" />
     <Compile Include="Common\DbType.cs" />
     <Compile Include="Data\BaseData.cs" />
     <Compile Include="Data\DatabaseData.cs" />
+    <Compile Include="Data\UserData.cs" />
     <Compile Include="Model\T_Database.cs" />
     <Compile Include="Model\T_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
