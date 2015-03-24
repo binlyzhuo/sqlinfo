@@ -3,9 +3,9 @@
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
 }
 
-<h2>AddServer</h2>
+<h2>添加服务器</h2>
 @model SQLInfo.Web.Models.DbServerModel
-@using (Html.BeginForm("AddServer", "Home", FormMethod.Post))
+@using (Html.BeginForm("AddServer", "Admin", FormMethod.Post))
 {
     <table>
         <tr>
@@ -15,7 +15,7 @@
         </tr>
         <tr>
             <td>数据库类型:</td>
-            <td>@Html.EnumDropDownListFor(u => u.DbType)</td>
+            <td>@Html.EnumDropDownListFor(u => u.DbType, new {style="width:154px;" })</td>
             <td>@Html.ValidationMessageFor(u => u.DbType)</td>
         </tr>
         <tr>

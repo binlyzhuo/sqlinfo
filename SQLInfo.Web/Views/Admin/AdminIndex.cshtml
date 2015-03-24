@@ -7,17 +7,20 @@
 @section header{
    <script type="text/javascript">
        function addDbServer() {
-           window.showModalDialog("/admin/addserver");
+           window.showModalDialog("/admin/addserver", window, "dialogWidth=500px;dialogHeight=300px;");
+           window.location.reload();
        }
 
        function deleteDbServer(id) {
            $.post("/admin/DeleteDbServer", { id: id }, function (data) {
-               alert('ok!');
+               //alert('ok!');
+               window.location.reload();
            });
        }
     </script>    
 }
-<h2>AdminIndex</h2>
+<h2>服务器列表</h2>
+<a href="/home/index">首页</a>
 <a href="#" onclick="addDbServer();">添加</a>
 <table class="gridtable">
     <tr>
@@ -35,7 +38,6 @@
             <td>@s.Admin</td>
             <td>@s.Password</td>
             <td>
-                <a href="#">修改</a>
                 <a href="#" onclick="deleteDbServer(@s.ID)">删除</a>
             </td>
         </tr>
