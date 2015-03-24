@@ -103,6 +103,8 @@ namespace SQLInfo.Web.Controllers
             var userinfo = userLogic.GetUserInfo(model.UserName,model.Password);
             if(userinfo!=null)
             {
+                var user = new UserInfo(userinfo.ID, userinfo.UserName);
+                UserInfo.SaveToSession(user);
                 return RedirectToAction("AdminIndex","Admin",null);
             }
             return View();
