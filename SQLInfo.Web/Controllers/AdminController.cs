@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SQLInfo.Web.Controllers
 {
+    [IsLogin]
     public class AdminController : Controller
     {
         // GET: Admin
@@ -53,5 +54,12 @@ namespace SQLInfo.Web.Controllers
 
             return RedirectToAction("AddServer");
         }
+
+        public ActionResult AdminIndex()
+        {
+            var dataServers = dataLogic.GetAllServers();
+            return View(dataServers);
+        }
+
     }
 }

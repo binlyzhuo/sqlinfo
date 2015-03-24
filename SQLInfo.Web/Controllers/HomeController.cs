@@ -110,12 +110,7 @@ namespace SQLInfo.Web.Controllers
             return View();
         }
 
-        public ActionResult AdminIndex()
-        {
-            var dataServers = dataLogic.GetAllServers();
-            return View(dataServers);
-        }
-
+        
         
     }
 }

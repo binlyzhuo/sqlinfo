@@ -65,6 +65,7 @@
     <Compile Include="ViewModel\ParentTreeNode.cs" />
     <Compile Include="ViewModel\TableDetail.cs" />
     <Compile Include="ViewModel\TreeNode.cs" />
+    <Compile Include="ViewModel\UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
