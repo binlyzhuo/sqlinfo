@@ -9,6 +9,12 @@
        function addDbServer() {
            window.showModalDialog("/home/addserver");
        }
+
+       function deleteDbServer(id) {
+           $.post("/admin/DeleteDbServer", { id: id }, function (data) {
+               alert('ok!');
+           });
+       }
     </script>    
 }
 <h2>AdminIndex</h2>
@@ -30,7 +36,7 @@
             <td>@s.Password</td>
             <td>
                 <a href="#">修改</a>
-                <a href="#">删除</a>
+                <a href="#" onclick="deleteDbServer(@s.ID)">删除</a>
             </td>
         </tr>
     }

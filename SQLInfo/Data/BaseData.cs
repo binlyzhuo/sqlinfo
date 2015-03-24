@@ -34,5 +34,10 @@ namespace SQLInfo.Data
         {
             return this.db.Fetch<T>();
         }
+
+        public bool Delete(object id)
+        {
+            return this.db.Delete<T>(id)>0;
+        }
     }
 }

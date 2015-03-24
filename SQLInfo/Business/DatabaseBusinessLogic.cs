@@ -41,5 +41,10 @@ namespace SQLInfo.Business
         {
             return databaseData.Add(dbServer);
         }
+
+        public bool DeleteDbServer(int id)
+        {
+            return databaseData.Delete(id);
+        }
     }
 }

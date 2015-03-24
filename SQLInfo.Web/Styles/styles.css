@@ -22,3 +22,7 @@
             border-color: #666666;
             background-color: #ffffff;
         }
+
+        table.gridtable tr:hover td{
+            background-color:gainsboro;
+        }
