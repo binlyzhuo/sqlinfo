@@ -4,7 +4,7 @@
 }
 
 <h2>AddServer</h2>
-@model SQLInfo.Model.T_Database
+@model SQLInfo.Web.Models.DbServerModel
 @using (Html.BeginForm("AddServer", "Home", FormMethod.Post))
 {
     <table>
@@ -12,6 +12,11 @@
             <td>服务器:</td>
             <td>@Html.TextBoxFor(u => u.Server)</td>
             <td>@Html.ValidationMessageFor(u => u.Server)</td>
+        </tr>
+        <tr>
+            <td>数据库类型:</td>
+            <td>@Html.EnumDropDownListFor(u => u.DbType)</td>
+            <td>@Html.ValidationMessageFor(u => u.DbType)</td>
         </tr>
         <tr>
             <td>用户名:</td>

@@ -36,5 +36,10 @@ namespace SQLInfo.Business
         {
             return databaseData.GetTableDetail(database,dbName,tableName);
         }
+
+        public int AddDbServer(T_Database dbServer)
+        {
+            return databaseData.Add(dbServer);
+        }
     }
 }

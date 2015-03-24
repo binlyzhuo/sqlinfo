@@ -1,4 +1,5 @@
 ﻿using SQLInfo.Business;
+using SQLInfo.Model;
 using SQLInfo.ViewModel;
 using SQLInfo.Web.Models;
 using System;
@@ -115,7 +116,27 @@ namespace SQLInfo.Web.Controllers
 
         public ActionResult AddServer()
         {
+            //DbServerModel
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddServer(DbServerModel model)
+        {
+            //DbServerModel
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+            T_Database dbServer = new T_Database();
+            dbServer.Server = model.Server;
+            dbServer.Admin = model.Admin;
+            dbServer.Password = model.Password;
+            dbServer.DbType = (int)model.DbType;
+
+            dataLogic.AddDbServer(dbServer);
+
+            return RedirectToAction("AddServer");
         }
     }
 }
