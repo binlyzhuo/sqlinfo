@@ -103,7 +103,7 @@ namespace SQLInfo.Web.Controllers
             var userinfo = userLogic.GetUserInfo(model.UserName,model.Password);
             if(userinfo!=null)
             {
-                return RedirectToAction("AdminIndex","Home",null);
+                return RedirectToAction("AdminIndex","Admin",null);
             }
             return View();
         }
@@ -114,29 +114,6 @@ namespace SQLInfo.Web.Controllers
             return View(dataServers);
         }
 
-        public ActionResult AddServer()
-        {
-            //DbServerModel
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddServer(DbServerModel model)
-        {
-            //DbServerModel
-            if(!ModelState.IsValid)
-            {
-                return View();
-            }
-            T_Database dbServer = new T_Database();
-            dbServer.Server = model.Server;
-            dbServer.Admin = model.Admin;
-            dbServer.Password = model.Password;
-            dbServer.DbType = (int)model.DbType;
-
-            dataLogic.AddDbServer(dbServer);
-
-            return RedirectToAction("AddServer");
-        }
+        
     }
 }
