@@ -9,12 +9,30 @@
     <script type="text/javascript" src="~/Scripts/jquery.ztree.all-3.5.min.js"></script>
     <script type="text/javascript">
         var setting = {
-            data: {
-                simpleData: {
-                    enable: true
-                }
+            async: {
+                enable: true,
+                url: "/home/GetRoot",
+                autoParam: ["id", "name", "level","rootid"],
+                otherParam: { "otherParam": "zTreeAsyncTest" },
+                dataFilter: filter
+            },
+            callback: {
+                onClick:nodeClick
             }
         };
+
+        function filter(treeId, parentNode, childNodes) {
+            if (!childNodes) return null;
+            for (var i = 0, l = childNodes.length; i < l; i++) {
+                childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
+            }
+            return childNodes;
+        }
+
+        function nodeClick(event, treeId, treeNode, clickFlag) {
+            //alert(treeNode.parentNode[0].name);
+        }
+
         var zNodes = [
 			{ id: 1, pId: 0, name: "父节点1 - 展开", open: true },
 			{ id: 11, pId: 1, name: "父节点11 - 折叠" },
@@ -48,7 +66,7 @@
         ];
 
         $(document).ready(function () {
-            $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            $.fn.zTree.init($("#treeDemo"), setting);
         });
     </script>
 }

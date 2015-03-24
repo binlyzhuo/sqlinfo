@@ -20,5 +20,15 @@ namespace SQLInfo.Business
         {
             return databaseData.GetAllDatabases(database);
         }
+
+        public List<T_Database> GetAllServers()
+        {
+            return databaseData.GetAll();
+        }
+
+        public List<string> GetAllTables(T_Database database,string dbName)
+        {
+            return databaseData.GetAllTables(database,dbName);
+        }
     }
 }

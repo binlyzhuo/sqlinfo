@@ -29,5 +29,10 @@ namespace SQLInfo.Data
         {
             return this.db.SingleOrDefaultById<T>(id);
         }
+
+        public List<T> GetAll()
+        {
+            return this.db.Fetch<T>();
+        }
     }
 }

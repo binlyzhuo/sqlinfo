@@ -29,6 +29,18 @@ namespace SQLInfo.Data
             return null;
         }
 
+        public List<string> GetAllTables(T_Database database,string dbName)
+        {
+            if (database.DbType == (int)DbType.SQLServer)
+            {
+                string connstring = string.Format("server={0};uid={1};pwd={2};database={3}", database.Server, database.Admin, database.Password,dbName);
+                Database sqlserverDb = new Database(connstring, DatabaseType.SqlServer2012);
+                string selectSql = "SELECT Name FROM SysObjects Where XType='U' ORDER BY Name";
+                var databaseList = sqlserverDb.Fetch<string>(selectSql);
+                return databaseList;
+            }
+            return null;
+        }
 
     }
 
