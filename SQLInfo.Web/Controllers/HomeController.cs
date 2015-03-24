@@ -19,7 +19,7 @@ namespace SQLInfo.Web.Controllers
             return View();
         }
 
-        public JsonResult GetRoot(int id = 0, string name = "", int level = 0,int rootid=0)
+        public JsonResult GetRoot(int id = 0, string name = "", int level = 0,string pname="", int rootid = 0)
         {
             if (id == 0)
             {
@@ -32,12 +32,14 @@ namespace SQLInfo.Web.Controllers
                         name = u.Server,
                         open = true,
                         pId = 0,
-                        isParent = true, rootid = id
+                        isParent = true,
+                        rootid = id,
+                        pName = pname
                     };
                 }).ToList();
                 return Json(nodes, JsonRequestBehavior.AllowGet);
             }
-            else if(level==0)
+            else if (level == 0)
             {
                 var dbServer = dataLogic.GetDatabase(id);
                 var dblist = dataLogic.GetAllDatabases(dbServer);
@@ -46,27 +48,45 @@ namespace SQLInfo.Web.Controllers
                     int index = 1;
                     return new ParentTreeNode()
                     {
-                        id =Convert.ToInt32(string.Format("{0}00{1}",id,index++)),
+                        id = Convert.ToInt32(string.Format("{0}00{1}", id, index++)),
                         name = u,
                         pId = id,
                         isParent = true,
-                        open = true,rootid=dbServer.ID
+                        open = true,
+                        rootid = dbServer.ID,
+                        pName = pname
                     };
                 }).ToList();
                 return Json(nodes, JsonRequestBehavior.AllowGet);
             }
-            else if(level==1)
+            else if (level == 1)
             {
                 var dbServer = dataLogic.GetDatabase(rootid);
-                var tables = dataLogic.GetAllTables(dbServer,name);
-                var tableNodes = tables.Select(u => {
-                    return new TreeNode() { 
-                     pId = id, name = u, id = 0, rootid = rootid
+                var tables = dataLogic.GetAllTables(dbServer, name);
+                var tableNodes = tables.Select(u =>
+                {
+                    return new TreeNode()
+                    {
+                        pId = id,
+                        name = u,
+                        id = 0,
+                        rootid = rootid,
+                        pName = pname
                     };
                 });
                 return Json(tableNodes, JsonRequestBehavior.AllowGet);
             }
             return null;
+        }
+
+        [HttpPost]
+        public ActionResult TableDetail(int serverid,string dbName,string tableName)
+        {
+            var dbServer = dataLogic.GetDatabase(serverid);
+            var tableDetails = dataLogic.GetTableDetail(dbServer, dbName, tableName);
+            ViewBag.TableName = tableName;
+            ViewBag.DbName = dbName;
+            return View(tableDetails);
         }
     }
 }

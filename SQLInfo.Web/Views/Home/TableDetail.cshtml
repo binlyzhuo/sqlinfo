@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "TableDetail";
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+@model List<SQLInfo.ViewModel.TableDetail>
+<h2>@ViewBag.DbName.@ViewBag.TableName</h2>
+
+<table class="gridtable">
+    <tr>
+        <th>字段名称</th>
+        <th>字段类型</th>
+        <th>字段长度</th>
+        <th>是否可空</th>
+        <th>是否自增长</th>
+        <th>描述</th>
+
+    </tr>
+    @foreach (var f in Model)
+    {
+        <tr>
+            <td>@f.FieldName</td>
+            <td>@f.FieldType</td>
+            <td>@f.MaxLength</td>
+            <td>@f.IsNull</td>
+            <td>@f.IsIdentity</td>
+            <td>@f.Description</td>
+        </tr>
+    }
+</table>

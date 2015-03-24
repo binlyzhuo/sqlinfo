@@ -13,5 +13,6 @@ namespace SQLInfo.ViewModel
         public string name { set; get; }
 
         public int rootid { set; get; }
+        public string pName { set; get; }
     }
 }

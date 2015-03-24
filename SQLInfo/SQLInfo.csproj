@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\packages\Dapper.1.39\lib\net45\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="NPoco">
       <HintPath>..\packages\NPoco.2.6.88\lib\net40\NPoco.dll</HintPath>
     </Reference>
@@ -58,6 +61,7 @@
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="ViewModel\ParentTreeNode.cs" />
+    <Compile Include="ViewModel\TableDetail.cs" />
     <Compile Include="ViewModel\TreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
