@@ -1,5 +1,6 @@
 ﻿using SQLInfo.Business;
 using SQLInfo.Model;
+using SQLInfo.ViewModel;
 using SQLInfo.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -61,5 +62,10 @@ namespace SQLInfo.Web.Controllers
             return View(dataServers);
         }
 
+        public ActionResult Logout()
+        {
+            UserInfo.ClearUserInfo();
+            return RedirectToAction("index","home",null);
+        }
     }
 }

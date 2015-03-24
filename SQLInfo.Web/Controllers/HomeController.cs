@@ -17,8 +17,8 @@ namespace SQLInfo.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var dbServer = dataLogic.GetDatabase(1);
-            var dblist = dataLogic.GetAllDatabases(dbServer);
+            //var dbServer = dataLogic.GetDatabase(1);
+            //var dblist = dataLogic.GetAllDatabases(dbServer);
             return View();
         }
 

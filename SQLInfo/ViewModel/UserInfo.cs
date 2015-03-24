@@ -32,5 +32,10 @@ namespace SQLInfo.ViewModel
         {
             return HttpContext.Current.Session["UserInfo"] as UserInfo;
         }
+
+        public static void ClearUserInfo()
+        {
+            HttpContext.Current.Session["UserInfo"] = null;
+        }
     }
 }

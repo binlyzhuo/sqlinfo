@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
 }
@@ -12,12 +11,12 @@
             async: {
                 enable: true,
                 url: "/home/GetRoot",
-                autoParam: ["id", "name","pname", "level","rootid"],
+                autoParam: ["id", "name", "pname", "level", "rootid"],
                 otherParam: { "otherParam": "zTreeAsyncTest" },
                 dataFilter: filter
             },
             callback: {
-                onClick:nodeClick
+                onClick: nodeClick
             }
         };
 
@@ -39,26 +38,33 @@
                 data: data,
                 dataType: 'html',
                 success: function (data) {
-                    
+
                     $("#divDetail").html(data);
                 }
             });
         }
 
-        
+
 
         $(document).ready(function () {
             $.fn.zTree.init($("#treeDemo"), setting);
         });
     </script>
-<style type="text/css">
-    
-</style>
+    <style type="text/css">
+    </style>
 }
 <div style="border-bottom:1px solid blue;height:50px;">
     <h1 style="float:left;width:300px;margin:0;">SQLInfo</h1>
     <span style="float:right;">
-        <a href="/home/login" target="_self">登录</a>
+        @if (SQLInfo.ViewModel.UserInfo.GetUserInfo() == null)
+        {
+            <a href="/home/login" target="_self">登录</a>
+        }
+        else
+        {
+            <a href="/admin/adminindex" target="_self">管理</a>
+            <a href="/admin/logout" target="_self">退出</a>
+        }
     </span>
 </div>
 <div>
