@@ -58,6 +58,7 @@
     <Compile Include="Business\DatabaseBusinessLogic.cs" />
     <Compile Include="Business\UserBusinessLogic.cs" />
     <Compile Include="Common\DbType.cs" />
+    <Compile Include="Common\DbTypeHelper.cs" />
     <Compile Include="Data\BaseData.cs" />
     <Compile Include="Data\DatabaseData.cs" />
     <Compile Include="Data\UserData.cs" />

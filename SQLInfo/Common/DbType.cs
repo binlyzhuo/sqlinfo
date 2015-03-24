@@ -9,6 +9,6 @@ namespace SQLInfo.Common
     public enum DbType
     {
         SQLServer=0,
-        MySQL=1
+        //MySQL=1
     }
 }
