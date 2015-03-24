@@ -7,23 +7,36 @@
 
 <table class="gridtable">
     <tr>
+        <th>表名</th>
+        <th>字段序号</th>
         <th>字段名称</th>
+        <th>标识</th>
+        <th>主键</th>
         <th>字段类型</th>
+        <th>占用字节数</th>
         <th>字段长度</th>
+        <th>小数位数</th>
         <th>是否可空</th>
-        <th>是否自增长</th>
+        
         <th>描述</th>
-
+        <th>默认值</th>
     </tr>
     @foreach (var f in Model)
     {
         <tr>
+            <td>@f.TableName</td>
+            <td>@f.FieldNo</td>
             <td>@f.FieldName</td>
-            <td>@f.FieldType</td>
-            <td>@f.MaxLength</td>
-            <td>@f.IsNull</td>
             <td>@f.IsIdentity</td>
+            <td>@f.IsPrimaryKey</td>
+            <td>@f.FieldType</td>
+            <td>@f.CharLength</td>
+            <td>@f.FieldLength</td>
+            <td>@f.DecimalDigits</td>
+            <td>@f.IsNull</td>
+            
             <td>@f.Description</td>
+            <td>@f.DefaultValue</td>
         </tr>
     }
 </table>

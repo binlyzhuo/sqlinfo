@@ -50,12 +50,35 @@ namespace SQLInfo.Data
             {
                 string connstring = string.Format("server={0};uid={1};pwd={2};database={3}", database.Server, database.Admin, database.Password, dbName);
                 Database sqlserverDb = new Database(connstring, DatabaseType.SqlServer2012);
-                string selectSql = string.Format(@"declare @table_name as varchar(max)
-set @table_name = '{0}' 
-select sys.columns.name as FieldName, sys.types.name as FieldType, sys.columns.max_length as MaxLength, sys.columns.is_nullable as IsNull, 
-  (select count(*) from sys.identity_columns where sys.identity_columns.object_id = sys.columns.object_id and sys.columns.column_id = sys.identity_columns.column_id) as IsIdentity ,
-  (select value from sys.extended_properties where sys.extended_properties.major_id = sys.columns.object_id and sys.extended_properties.minor_id = sys.columns.column_id) as Description
-  from sys.columns, sys.tables, sys.types where sys.columns.object_id = sys.tables.object_id and sys.columns.system_type_id=sys.types.system_type_id and sys.tables.name=@table_name order by sys.columns.column_id",tableName);
+                string selectSql = string.Format(@"SELECT (case when a.colorder=1 then d.name else '' end) TableName,
+                                                a.colorder FieldNo,a.name FieldName,
+                                                (case when COLUMNPROPERTY( a.id,a.name,'IsIdentity')=1 then '√'else '' end) IsIdentity,
+                                                (case when (SELECT count(*) 
+                                                FROM sysobjects 
+                                                WHERE (name in (SELECT name
+                                                FROM sysindexes
+                                                WHERE (id = a.id) AND (indid in (SELECT indid
+                                                FROM sysindexkeys
+                                                WHERE (id = a.id) AND (colid in (SELECT colid
+                                                FROM syscolumns
+                                                WHERE (id = a.id) AND (name = a.name))))))
+                                                ) AND (xtype = 'PK') 
+                                                ) > 0 then '√' else '' end) IsPrimaryKey,
+                                                b.name as FieldType,
+                                                a.length as CharLength,
+                                                COLUMNPROPERTY(a.id,a.name,'PRECISION') as FieldLength,
+                                                isnull(COLUMNPROPERTY(a.id,a.name,'Scale'),0) as DecimalDigits,
+                                                (case when a.isnullable=1 then '√'else '' end) IsNull,
+                                                isnull(g.[value],'') AS Description ,
+                                                isnull(e.text,'') DefaultValue
+                               
+                                                FROM  syscolumns a 
+                                                left join systypes b on a.xtype=b.xusertype
+                                                inner join sysobjects d on a.id=d.id  and  d.xtype='U' and d.name<>'dtproperties'
+                                                left join syscomments e on a.cdefault=e.id
+                                                left join sys.extended_properties g on a.id=g.major_id AND a.colid = g.minor_id  
+                                                where d.name ='{0}'
+                                                order by a.id,a.colorder ", tableName);
 
                 //var items = sqlserverDb.Connection.Query<TableDetail>(selectSql);
                 System.Data.SqlClient.SqlConnection sqlConn = new System.Data.SqlClient.SqlConnection();
